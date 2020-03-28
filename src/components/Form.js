@@ -11,7 +11,14 @@ const initialState = {
 const Form = () => {
   const [appointment, setAppointment] = useState(initialState);
 
-  const onChangeAppointment = () => console.log("Escribiendo");
+  const onChangeAppointment = e => {
+    setAppointment({
+      ...appointment,
+      [e.target.name]: e.target.value
+    })
+  };
+
+  const { pet, owner, date, time, symtom } = appointment
 
   return (
     <>
@@ -24,6 +31,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre mascota"
           onChange={onChangeAppointment}
+          value={pet}
         />
         <label>Nombre Dueño</label>
         <input
@@ -32,6 +40,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre dueño de la mascota"
           onChange={onChangeAppointment}
+          value={owner}
         />
         <label>Fecha</label>
         <input
@@ -39,6 +48,7 @@ const Form = () => {
           name="date"
           className="u-full-width"
           onChange={onChangeAppointment}
+          value={date}
         />
         <label>Hora</label>
         <input
@@ -46,12 +56,14 @@ const Form = () => {
           name="time"
           className="u-full-width"
           onChange={onChangeAppointment}
+          value={time}
         />
         <label>Síntomas</label>
         <textarea
           name="symptom"
           className="u-full-width"
           onChange={onChangeAppointment}
+          value={symtom}
         />
         <button type="submit" className="u-full-width button-primary">
           Agregar Cita
