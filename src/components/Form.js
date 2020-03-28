@@ -40,6 +40,13 @@ const Form = ({ createAppointment }) => {
     createAppointment(appointment);
 
     // Restart form
+    setAppointment({
+      pet: "",
+      owner: "",
+      date: "",
+      time: "",
+      symptom: ""
+    })
   };
 
   const onChangeAppointment = e => {
