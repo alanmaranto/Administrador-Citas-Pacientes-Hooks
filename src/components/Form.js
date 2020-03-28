@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uuid from 'uuid/v4';
 
 const initialState = {
   pet: "",
@@ -11,24 +12,29 @@ const initialState = {
 const Form = () => {
   const [appointment, setAppointment] = useState(initialState);
   const [error, setError] = useState(false);
-  const { pet, owner, date, time, symtom } = appointment;
+  const { pet, owner, date, time, symptom } = appointment;
 
   const onSubmitAppointment = e => {
     e.preventDefault();
 
     // Validate
-    if (
+     if (
       pet.trim() === "" ||
       owner.trim() === "" ||
       date.trim() === "" ||
       time.trim() === "" ||
-      symtom.trim() === ""
+      symptom.trim() === ""
     ) {
-      console.log("There is an error");
+      console.log(pet,owner,date,time,symptom)
       setError(true);
       return;
     }
+
+    //Remove previous message
+    setError(false);
+
     //Assign an id
+    appointment.id = uuid();
 
     // Create the appointment
 
@@ -90,7 +96,7 @@ const Form = () => {
           name="symptom"
           className="u-full-width"
           onChange={onChangeAppointment}
-          value={symtom}
+          value={symptom}
         />
         <button type="submit" className="u-full-width button-primary">
           Agregar Cita
