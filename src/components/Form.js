@@ -9,7 +9,7 @@ const initialState = {
   symptom: ""
 };
 
-const Form = () => {
+const Form = ({ createAppointment }) => {
   const [appointment, setAppointment] = useState(initialState);
   const [error, setError] = useState(false);
   const { pet, owner, date, time, symptom } = appointment;
@@ -37,6 +37,7 @@ const Form = () => {
     appointment.id = uuid();
 
     // Create the appointment
+    createAppointment(appointment);
 
     // Restart form
   };
