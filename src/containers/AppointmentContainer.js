@@ -3,11 +3,21 @@ import Form from "../components/Form";
 import Appointment from "../components/Appointment";
 
 function App() {
-  const [listAppointments, setListAppointments] = useState([]);
+  // listAppointments in local storage
+  let initialAppointments = JSON.parse(localStorage.getItem('appointments'))
+  if (!initialAppointments) {
+    initialAppointments = [];
+  }
+
+  const [listAppointments, setListAppointments] = useState(initialAppointments);
 
   // Use Effect when the state changes
   useEffect(() => {
-    console.log('something happened with the listAppointments')
+    if (initialAppointments) {
+      localStorage.setItem('appointments', JSON.stringify(listAppointments))
+    } else {
+      localStorage.setItem('appointments', JSON.stringify([]));
+    }
   }, [listAppointments])
 
   // Take actual appointment and add the new one
