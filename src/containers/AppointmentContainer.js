@@ -12,9 +12,15 @@ function App() {
 
   // Delete appointment by id
   const deleteAppointment = id => {
-    const newAppointments = listAppointments.filter(appointment => appointment.id !== id)
-    setListAppointments(newAppointments)
-  }
+    const newAppointments = listAppointments.filter(
+      appointment => appointment.id !== id
+    );
+    setListAppointments(newAppointments);
+  };
+
+  // Conditional message
+  const title =
+    listAppointments.length > 0 ? "Administra tus citas" : "No hay citas";
 
   return (
     <>
@@ -25,7 +31,7 @@ function App() {
             <Form createAppointment={createAppointment} />
           </div>
           <div className="one-half column">
-            <h2>Administra tus citas</h2>
+            <h2>{title}</h2>
             {listAppointments.map(appointment => (
               <Appointment
                 key={appointment.id}
