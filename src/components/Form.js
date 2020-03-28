@@ -10,31 +10,46 @@ const initialState = {
 
 const Form = () => {
   const [appointment, setAppointment] = useState(initialState);
+  const [error, setError] = useState(false);
+  const { pet, owner, date, time, symtom } = appointment;
 
   const onSubmitAppointment = e => {
     e.preventDefault();
-    // Validate
 
+    // Validate
+    if (
+      pet.trim() === "" ||
+      owner.trim() === "" ||
+      date.trim() === "" ||
+      time.trim() === "" ||
+      symtom.trim() === ""
+    ) {
+      console.log("There is an error");
+      setError(true);
+      return;
+    }
     //Assign an id
 
     // Create the appointment
 
     // Restart form
-
-  }
+  };
 
   const onChangeAppointment = e => {
     setAppointment({
       ...appointment,
       [e.target.name]: e.target.value
-    })
+    });
   };
-
-  const { pet, owner, date, time, symtom } = appointment
 
   return (
     <>
       <h2>Crear Cita</h2>
+
+      {error ? (
+        <p className="alerta-error">Todos los campos son obligatorios</p>
+      ) : null}
+
       <form onSubmit={onSubmitAppointment}>
         <label>Nombre Mascota</label>
         <input
