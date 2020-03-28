@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Appointment from './containers/AppointmentContainer'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Appointment />
   </React.StrictMode>,
   document.getElementById('root')
 );
