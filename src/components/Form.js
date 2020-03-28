@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
   pet: "",
@@ -34,7 +34,7 @@ const Form = ({ createAppointment }) => {
     setError(false);
 
     //Assign an id
-    appointment.id = uuid();
+    appointment.id = uuidv4();
 
     // Create the appointment
     createAppointment(appointment);
