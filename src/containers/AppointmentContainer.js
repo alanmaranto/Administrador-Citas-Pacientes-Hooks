@@ -4,7 +4,7 @@ import Appointment from "../components/Appointment";
 
 function App() {
   // listAppointments in local storage
-  let initialAppointments = JSON.parse(localStorage.getItem('appointments'))
+  let initialAppointments = JSON.parse(localStorage.getItem('appointments'));
   if (!initialAppointments) {
     initialAppointments = [];
   }
@@ -13,6 +13,8 @@ function App() {
 
   // Use Effect when the state changes
   useEffect(() => {
+    let initialAppointments = JSON.parse(localStorage.getItem('appointments'));
+
     if (initialAppointments) {
       localStorage.setItem('appointments', JSON.stringify(listAppointments))
     } else {
