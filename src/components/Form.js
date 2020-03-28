@@ -11,6 +11,18 @@ const initialState = {
 const Form = () => {
   const [appointment, setAppointment] = useState(initialState);
 
+  const onSubmitAppointment = e => {
+    e.preventDefault();
+    // Validate
+
+    //Assign an id
+
+    // Create the appointment
+
+    // Restart form
+
+  }
+
   const onChangeAppointment = e => {
     setAppointment({
       ...appointment,
@@ -23,7 +35,7 @@ const Form = () => {
   return (
     <>
       <h2>Crear Cita</h2>
-      <form>
+      <form onSubmit={onSubmitAppointment}>
         <label>Nombre Mascota</label>
         <input
           type="text"
