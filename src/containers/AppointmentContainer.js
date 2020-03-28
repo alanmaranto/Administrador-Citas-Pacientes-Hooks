@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "../components/Form";
 import Appointment from "../components/Appointment";
 
 function App() {
   const [listAppointments, setListAppointments] = useState([]);
+
+  // Use Effect when the state changes
+  useEffect(() => {
+    console.log('something happened with the listAppointments')
+  }, [listAppointments])
 
   // Take actual appointment and add the new one
   const createAppointment = appointment => {
